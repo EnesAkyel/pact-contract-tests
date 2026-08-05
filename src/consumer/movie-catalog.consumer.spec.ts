@@ -33,7 +33,7 @@ describe('movie-catalog-api consumer pact', () => {
             }),
             totalElements: integer(10),
             totalPages: integer(1),
-            number: integer(0),
+            page: integer(0),
             size: integer(10),
           }),
         })
@@ -75,7 +75,7 @@ describe('movie-catalog-api consumer pact', () => {
             }),
             totalElements: integer(1),
             totalPages: integer(1),
-            number: integer(0),
+            page: integer(0),
             size: integer(10),
           }),
         })
@@ -113,7 +113,7 @@ describe('movie-catalog-api consumer pact', () => {
             }),
             totalElements: integer(1),
             totalPages: integer(1),
-            number: integer(0),
+            page: integer(0),
             size: integer(10),
           }),
         })
@@ -185,7 +185,7 @@ describe('movie-catalog-api consumer pact', () => {
             }),
             totalElements: integer(5),
             totalPages: integer(1),
-            number: integer(0),
+            page: integer(0),
             size: integer(10),
           }),
         })
