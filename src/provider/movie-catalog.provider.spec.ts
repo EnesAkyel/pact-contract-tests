@@ -6,7 +6,7 @@ const PACT_FILE = path.resolve(process.cwd(), 'pacts', 'pact-contract-tests-movi
 
 describe('movie-catalog-api provider verification', () => {
   it('satisfies all consumer pacts', async () => {
-    await new Verifier({
+    const result = await new Verifier({
       provider: 'movie-catalog-api',
       providerBaseUrl: BASE_URL,
       pactUrls: [PACT_FILE],
@@ -25,5 +25,7 @@ describe('movie-catalog-api provider verification', () => {
         'studio 99 has no movies': async () => {},
       },
     }).verifyProvider();
+
+    expect(result).toContain('movie-catalog-api');
   });
 });
