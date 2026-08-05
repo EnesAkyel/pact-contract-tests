@@ -1,0 +1,19 @@
+{
+  "name": "pact-contract-tests",
+  "version": "1.0.0",
+  "description": "Pact consumer-driven contract tests for movie-catalog-api",
+  "scripts": {
+    "test:consumer": "jest --config jest.consumer.config.js --forceExit",
+    "test:provider": "jest --config jest.provider.config.js --forceExit",
+    "test": "npm run test:consumer && npm run test:provider"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^17.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.0",
+    "axios": "^1.9.0",
+    "jest": "^30.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.8.0"
+  }
+}

@@ -1,0 +1,741 @@
+{
+  "consumer": {
+    "name": "pact-contract-tests"
+  },
+  "interactions": [
+    {
+      "description": "a request for a non-existent movie ID 9999",
+      "providerStates": [
+        {
+          "name": "movie with ID 9999 does not exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/movie/9999"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "a request for all movies",
+      "providerStates": [
+        {
+          "name": "movies exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/movies"
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "genre": "Sci-Fi",
+              "mid": 1001,
+              "name": "Inception",
+              "price": 9.99,
+              "rating": "PG-13",
+              "studio": 1
+            }
+          ],
+          "number": 0,
+          "size": 10,
+          "totalElements": 10,
+          "totalPages": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$.content[*].genre": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].mid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.content[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            },
+            "$.content[*].rating": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].studio": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.number": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.size": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalElements": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalPages": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for all studios",
+      "providerStates": [
+        {
+          "name": "studios exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/studios"
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "name": "Warner Bros",
+              "sid": 1
+            }
+          ],
+          "number": 0,
+          "size": 10,
+          "totalElements": 5,
+          "totalPages": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$.content[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].sid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.number": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.size": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalElements": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalPages": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for movie with ID 1001",
+      "providerStates": [
+        {
+          "name": "movie with ID 1001 exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/movie/1001"
+      },
+      "response": {
+        "body": {
+          "genre": "Sci-Fi",
+          "mid": 1001,
+          "name": "Inception",
+          "price": 9.99,
+          "rating": "PG-13",
+          "studio": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.genre": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.mid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            },
+            "$.rating": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.studio": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for movies belonging to studio 1",
+      "providerStates": [
+        {
+          "name": "studio 1 has movies"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/studios/1/movies"
+      },
+      "response": {
+        "body": [
+          {
+            "genre": "Sci-Fi",
+            "mid": 1001,
+            "name": "Inception",
+            "price": 9.99,
+            "rating": "PG-13",
+            "studio": 1
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$[*].genre": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[*].mid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[*].price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            },
+            "$[*].rating": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[*].studio": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for movies belonging to studio 99",
+      "providerStates": [
+        {
+          "name": "studio 99 has no movies"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/studios/99/movies"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "a request for movies filtered by genre Action",
+      "providerStates": [
+        {
+          "name": "action movies exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/movies",
+        "query": {
+          "genre": [
+            "Action"
+          ]
+        }
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "genre": "Action",
+              "mid": 1002,
+              "name": "Die Hard",
+              "price": 7.99,
+              "rating": "R",
+              "studio": 1
+            }
+          ],
+          "number": 0,
+          "size": 10,
+          "totalElements": 1,
+          "totalPages": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$.content[*].genre": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].mid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.content[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            },
+            "$.content[*].rating": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].studio": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.number": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.size": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalElements": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalPages": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request for movies filtered by rating PG-13",
+      "providerStates": [
+        {
+          "name": "PG-13 movies exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/movies",
+        "query": {
+          "rating": [
+            "PG-13"
+          ]
+        }
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "genre": "Sci-Fi",
+              "mid": 1001,
+              "name": "Inception",
+              "price": 9.99,
+              "rating": "PG-13",
+              "studio": 1
+            }
+          ],
+          "number": 0,
+          "size": 10,
+          "totalElements": 1,
+          "totalPages": 1
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$.content[*].genre": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].mid": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.content[*].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].price": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "decimal"
+                }
+              ]
+            },
+            "$.content[*].rating": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.content[*].studio": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.number": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.size": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalElements": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            },
+            "$.totalPages": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "17.0.1"
+    },
+    "pactRust": {
+      "ffi": "0.5.4",
+      "models": "1.3.11"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "movie-catalog-api"
+  }
+}
