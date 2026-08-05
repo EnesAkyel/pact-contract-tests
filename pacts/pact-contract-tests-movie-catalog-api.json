@@ -41,7 +41,7 @@
               "studio": 1
             }
           ],
-          "number": 0,
+          "page": 0,
           "size": 10,
           "totalElements": 10,
           "totalPages": 1
@@ -116,7 +116,7 @@
                 }
               ]
             },
-            "$.number": {
+            "$.page": {
               "combine": "AND",
               "matchers": [
                 {
@@ -172,7 +172,7 @@
               "sid": 1
             }
           ],
-          "number": 0,
+          "page": 0,
           "size": 10,
           "totalElements": 5,
           "totalPages": 1
@@ -215,7 +215,7 @@
                 }
               ]
             },
-            "$.number": {
+            "$.page": {
               "combine": "AND",
               "matchers": [
                 {
@@ -470,7 +470,7 @@
               "studio": 1
             }
           ],
-          "number": 0,
+          "page": 0,
           "size": 10,
           "totalElements": 1,
           "totalPages": 1
@@ -545,7 +545,7 @@
                 }
               ]
             },
-            "$.number": {
+            "$.page": {
               "combine": "AND",
               "matchers": [
                 {
@@ -610,7 +610,7 @@
               "studio": 1
             }
           ],
-          "number": 0,
+          "page": 0,
           "size": 10,
           "totalElements": 1,
           "totalPages": 1
@@ -685,7 +685,7 @@
                 }
               ]
             },
-            "$.number": {
+            "$.page": {
               "combine": "AND",
               "matchers": [
                 {
