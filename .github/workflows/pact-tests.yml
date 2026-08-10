@@ -71,12 +71,15 @@ jobs:
           rm app.jar
           docker compose up -d
         working-directory: movie-catalog-api
+        env:
+          AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+          AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Wait for API to be ready
         run: |
           for i in $(seq 1 30); do
-            if curl --proto '=https' --tlsv1.2 -sf http://localhost:8080/api/v1/movies > /dev/null 2>&1 || \
-               curl -sf http://localhost:8080/api/v1/movies > /dev/null 2>&1; then
+            if curl -sf http://localhost:8080/v3/api-docs > /dev/null 2>&1; then
               echo "API ready after $((i * 5))s"
               exit 0
             fi
@@ -107,3 +110,5 @@ jobs:
         run: npm run test:provider
         env:
           BASE_URL: http://localhost:8080
+          AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+          AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}

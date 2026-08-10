@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const { like, eachLike, integer, decimal, string } = MatchersV3;
 
+const AUTH_HEADER = 'Bearer pact-test-token';
+
 const provider = new PactV3({
   consumer: 'pact-contract-tests',
   provider: 'movie-catalog-api',
@@ -18,7 +20,11 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('movies exist')
         .uponReceiving('a request for all movies')
-        .withRequest({ method: 'GET', path: '/api/v1/movies' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/movies',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({
           status: 200,
           headers: { 'Content-Type': 'application/json' },
@@ -38,7 +44,9 @@ describe('movie-catalog-api consumer pact', () => {
           }),
         })
         .executeTest(async (mockServer) => {
-          const res = await axios.get(`${mockServer.url}/api/v1/movies`);
+          const res = await axios.get(`${mockServer.url}/api/v1/movies`, {
+            headers: { Authorization: AUTH_HEADER },
+          });
           expect(res.status).toBe(200);
           expect(Array.isArray(res.data.content)).toBe(true);
           expect(res.data.content[0]).toMatchObject({
@@ -60,6 +68,7 @@ describe('movie-catalog-api consumer pact', () => {
           method: 'GET',
           path: '/api/v1/movies',
           query: { genre: 'Action' },
+          headers: { Authorization: string(AUTH_HEADER) },
         })
         .willRespondWith({
           status: 200,
@@ -82,6 +91,7 @@ describe('movie-catalog-api consumer pact', () => {
         .executeTest(async (mockServer) => {
           const res = await axios.get(`${mockServer.url}/api/v1/movies`, {
             params: { genre: 'Action' },
+            headers: { Authorization: AUTH_HEADER },
           });
           expect(res.status).toBe(200);
           expect(
@@ -98,6 +108,7 @@ describe('movie-catalog-api consumer pact', () => {
           method: 'GET',
           path: '/api/v1/movies',
           query: { rating: 'PG-13' },
+          headers: { Authorization: string(AUTH_HEADER) },
         })
         .willRespondWith({
           status: 200,
@@ -120,6 +131,7 @@ describe('movie-catalog-api consumer pact', () => {
         .executeTest(async (mockServer) => {
           const res = await axios.get(`${mockServer.url}/api/v1/movies`, {
             params: { rating: 'PG-13' },
+            headers: { Authorization: AUTH_HEADER },
           });
           expect(res.status).toBe(200);
           expect(
@@ -134,7 +146,11 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('movie with ID 1001 exists')
         .uponReceiving('a request for movie with ID 1001')
-        .withRequest({ method: 'GET', path: '/api/v1/movie/1001' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/movie/1001',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({
           status: 200,
           headers: { 'Content-Type': 'application/json' },
@@ -148,7 +164,9 @@ describe('movie-catalog-api consumer pact', () => {
           }),
         })
         .executeTest(async (mockServer) => {
-          const res = await axios.get(`${mockServer.url}/api/v1/movie/1001`);
+          const res = await axios.get(`${mockServer.url}/api/v1/movie/1001`, {
+            headers: { Authorization: AUTH_HEADER },
+          });
           expect(res.status).toBe(200);
           expect(res.data.mid).toBe(1001);
         });
@@ -158,10 +176,15 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('movie with ID 9999 does not exist')
         .uponReceiving('a request for a non-existent movie ID 9999')
-        .withRequest({ method: 'GET', path: '/api/v1/movie/9999' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/movie/9999',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({ status: 404 })
         .executeTest(async (mockServer) => {
           const res = await axios.get(`${mockServer.url}/api/v1/movie/9999`, {
+            headers: { Authorization: AUTH_HEADER },
             validateStatus: () => true,
           });
           expect(res.status).toBe(404);
@@ -174,7 +197,11 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('studios exist')
         .uponReceiving('a request for all studios')
-        .withRequest({ method: 'GET', path: '/api/v1/studios' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/studios',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({
           status: 200,
           headers: { 'Content-Type': 'application/json' },
@@ -190,7 +217,9 @@ describe('movie-catalog-api consumer pact', () => {
           }),
         })
         .executeTest(async (mockServer) => {
-          const res = await axios.get(`${mockServer.url}/api/v1/studios`);
+          const res = await axios.get(`${mockServer.url}/api/v1/studios`, {
+            headers: { Authorization: AUTH_HEADER },
+          });
           expect(res.status).toBe(200);
           expect(Array.isArray(res.data.content)).toBe(true);
           expect(res.data.content[0]).toMatchObject({
@@ -206,7 +235,11 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('studio 1 has movies')
         .uponReceiving('a request for movies belonging to studio 1')
-        .withRequest({ method: 'GET', path: '/api/v1/studios/1/movies' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/studios/1/movies',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({
           status: 200,
           headers: { 'Content-Type': 'application/json' },
@@ -220,7 +253,9 @@ describe('movie-catalog-api consumer pact', () => {
           }),
         })
         .executeTest(async (mockServer) => {
-          const res = await axios.get(`${mockServer.url}/api/v1/studios/1/movies`);
+          const res = await axios.get(`${mockServer.url}/api/v1/studios/1/movies`, {
+            headers: { Authorization: AUTH_HEADER },
+          });
           expect(res.status).toBe(200);
           expect(Array.isArray(res.data)).toBe(true);
         });
@@ -230,10 +265,15 @@ describe('movie-catalog-api consumer pact', () => {
       await provider
         .given('studio 99 has no movies')
         .uponReceiving('a request for movies belonging to studio 99')
-        .withRequest({ method: 'GET', path: '/api/v1/studios/99/movies' })
+        .withRequest({
+          method: 'GET',
+          path: '/api/v1/studios/99/movies',
+          headers: { Authorization: string(AUTH_HEADER) },
+        })
         .willRespondWith({ status: 404 })
         .executeTest(async (mockServer) => {
           const res = await axios.get(`${mockServer.url}/api/v1/studios/99/movies`, {
+            headers: { Authorization: AUTH_HEADER },
             validateStatus: () => true,
           });
           expect(res.status).toBe(404);
