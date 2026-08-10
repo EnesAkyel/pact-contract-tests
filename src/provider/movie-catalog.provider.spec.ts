@@ -24,7 +24,7 @@ describe('movie-catalog-api provider verification', () => {
       logLevel: 'warn',
       // Recorded pacts carry a fake bearer token; swap it for a real one
       // before replaying requests against the live API.
-      requestFilter: (req, _res, next) => {
+      requestFilter: (req: any, _res: any, next: any) => {
         req.headers['authorization'] = `Bearer ${token}`;
         next();
       },
