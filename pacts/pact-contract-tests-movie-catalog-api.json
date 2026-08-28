@@ -11,6 +11,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/movie/9999"
       },
@@ -26,6 +41,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/movies"
       },
@@ -161,6 +191,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/studios"
       },
@@ -260,6 +305,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/movie/1001"
       },
@@ -346,6 +406,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/studios/1/movies"
       },
@@ -435,6 +510,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/studios/99/movies"
       },
@@ -450,6 +540,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/movies",
         "query": {
@@ -590,6 +695,21 @@
         }
       ],
       "request": {
+        "headers": {
+          "Authorization": "Bearer pact-test-token"
+        },
+        "matchingRules": {
+          "header": {
+            "Authorization": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
         "method": "GET",
         "path": "/api/v1/movies",
         "query": {
@@ -725,11 +845,11 @@
   ],
   "metadata": {
     "pact-js": {
-      "version": "17.0.1"
+      "version": "17.1.3"
     },
     "pactRust": {
-      "ffi": "0.5.4",
-      "models": "1.3.11"
+      "ffi": "0.5.6",
+      "models": "1.3.14"
     },
     "pactSpecification": {
       "version": "3.0.0"
