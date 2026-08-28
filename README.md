@@ -16,7 +16,7 @@ This differs from schema validation (which checks shape) and integration testing
 | TypeScript            | 6.0.3   | Type-safe test scripts           |
 | Jest                  | 30.x    | Test runner                      |
 | ts-jest               | 29.x    | Test runner                      |
-| Node.js               | 24      | Runtime                          |
+| Node.js               | 26      | Runtime                          |
 
 ## Project Structure
 
@@ -47,7 +47,7 @@ pacts/
 
 ### Prerequisites
 
-- Node.js 24+
+- Node.js 26+
 - `npm install`
 
 For provider verification only:
