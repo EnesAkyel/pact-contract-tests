@@ -10,12 +10,13 @@ This differs from schema validation (which checks shape) and integration testing
 
 ## Tech Stack
 
-| Tool                    | Version | Purpose                          |
-|-------------------------|---------|----------------------------------|
-| @pact-foundation/pact   | 17.x    | Pact consumer + provider library |
-| TypeScript              | 5.8     | Type-safe test scripts           |
-| Jest + ts-jest          | 30.x    | Test runner                      |
-| Node.js                 | 24      | Runtime                          |
+| Tool                  | Version | Purpose                          |
+|-----------------------|---------|----------------------------------|
+| @pact-foundation/pact | 17.x    | Pact consumer + provider library |
+| TypeScript            | 6.0.3   | Type-safe test scripts           |
+| Jest                  | 30.x    | Test runner                      |
+| ts-jest               | 29.x    | Test runner                      |
+| Node.js               | 26      | Runtime                          |
 
 ## Project Structure
 
@@ -46,7 +47,7 @@ pacts/
 
 ### Prerequisites
 
-- Node.js 24+
+- Node.js 26+
 - `npm install`
 
 For provider verification only:
@@ -82,6 +83,16 @@ BASE_URL=https://your-api.example.com npm run test:provider
 
 ```bash
 npm test
+```
+
+## Checking for Dependency Upgrades
+
+```bash
+# List outdated npm packages (current vs. wanted vs. latest)
+npm outdated
+
+# Explain why a package is pinned to its current range (peer dependency chain)
+npm explain <package>
 ```
 
 ## CI/CD
